@@ -1,0 +1,237 @@
+<Manager>:
+    Menu:
+        name: "menu"
+    Cardapio:
+        name: "Cardapio"
+    Pedido:
+        name: "Pedido"
+    Comanda:
+        name: "Comanda"
+
+<Menu>:
+    BoxLayout:
+        canvas:
+            Rectangle:
+                source: "data/azul.jpg"
+                pos: self.pos
+                size: self.size
+        orientation: "vertical"
+        padding: root.width * 0.20, root.height * 0.1
+        BoxLayout:
+            orientation: "vertical"
+            Image:
+                source: "data/rolf.gif"
+            Label:
+                text: "Tiger Bakery"
+                color: 0, 0, 0, 1
+                bold: True
+                font_size: 30
+                font_name: "Comic"
+        BoxLayout:
+            orientation: "vertical"
+            spacing: 30
+            ButtonMenu:
+                text: "Cardápio"
+                bold: True
+                font_size: 20
+                size_hint_y: None
+                height: 50
+                on_release: app.root.current = "Cardapio"
+            ButtonMenu:
+                text: "Realizar Pedido"
+                bold: True
+                font_size: 20
+                size_hint_y: None
+                height: 50
+                on_release: app.root.current = "Pedido"
+
+<Cardapio>:
+    BoxLayout:
+        canvas:
+            Rectangle:
+                source: "data/menu.jpg"
+                pos: self.pos
+                size: self.size
+        orientation: "vertical"
+        padding: root.width * 0.20, root.height * 0.2
+    BoxLayout:
+        size_hint_y: None
+        height: 50
+        pos_hint: {"top": 1}  
+        ButtonMenu:
+            text: '<-'
+            size_hint: None, None
+            size: 100, 50
+            on_release:
+                app.root.current = "menu"
+                app.root.transition.direction = "right"
+    GridLayout:
+        cols: 2
+        spacing: 60
+        padding: 90
+
+        Image:
+            source: "data/inv.png"
+            size_hint: None, None
+            size: root.width / 3 - 60, root.width / 3 - 60
+        Image:
+            source: "data/inv.png"
+            size_hint: None, None
+            size: root.width / 3 - 60, root.width / 3 - 60
+        Image:
+            source: "data/moran.png"
+            size_hint: None, None
+            size: root.width / 3 - 60, root.width / 3 - 60
+        Image:
+            source: "data/laran.png"
+            size_hint: None, None
+            size: root.width / 3 - 60, root.width / 3 - 60
+        Image:
+            source: "data/pizza.png"
+            size_hint: None, None
+            size: root.width / 3 - 60, root.width / 3 - 60
+        Image:
+            source: "data/donut.png"
+            size_hint: None, None
+            size: root.width / 3 - 60, root.width / 3 - 60
+        Image:
+            source: "data/hamburguer.png"
+            size_hint: None, None
+            size: root.width / 3 - 60, root.width / 3 - 60
+        Image:
+            source: "data/batata.png"
+            size_hint: None, None
+            size: root.width / 3 - 60, root.width / 3 - 60
+
+<Pedido>:
+    BoxLayout:
+        canvas:
+            Rectangle:
+                source: "data/la.jpg"
+                pos: self.pos
+                size: self.size
+        orientation: "vertical"
+        padding: root.width * 0.20, root.height * 0.2
+        Label: 
+            text: "˚Deseja realizar um pedido?˚"
+            canvas:
+                Color:
+                    rgba: 0.1, 0.5, 0.7, 1
+            bold: True 
+            font_size: 20
+            font_name: "Comic"
+            color: 0.0667, 0.1765, 0.2353, 1
+        AsyncImage:
+            source: "data/un.gif"
+            size_hint: 1, None
+            height: 200
+        BoxLayout:
+            orientation: "vertical"
+            spacing: 20
+            ButtonMenu:
+                text: "Sim"
+                bold: True
+                font_size: 20
+                size_hint_y: None
+                height: 50
+                on_release:
+                    app.root.current = "Comanda"
+                    app.root.transition.direction = "left"
+            ButtonMenu:
+                text: "Voltar"
+                bold: True
+                font_size: 20
+                size_hint_y: None
+                height: 50
+                on_release:
+                    app.root.current = "menu"
+                    app.root.transition.direction = "left"
+
+<Comanda>:
+    BoxLayout:
+        canvas.before:
+            Color:
+                rgba: 0, 0, 0.2, 1  
+            Rectangle:
+                size: self.size
+                pos: self.pos
+        orientation: 'vertical'
+
+        Label:
+            text: 'Comanda'
+            size_hint_y: None
+            height: '48dp'
+            font_name: "Comic"
+            font_size: '25sp'
+
+        GridLayout:
+            cols: 2
+            padding: '10dp'
+            spacing: '10dp'
+
+            Label:
+                text: 'Número para Contato'
+                font_name: "Comic"
+
+            TextInput:
+                id: numero_input
+                hint_text: 'Inserir Número'
+
+            Label:
+                text: 'Nome do cliente'
+                font_name: "Comic"
+
+            TextInput:
+                id: nome_input
+                hint_text: 'Inserir Nome'
+
+            Label:
+                text: 'Pedido'
+                font_name: "Comic"
+
+            TextInput:
+                id: pedido_input
+                hint_text: 'Inserir Pedido'
+
+            Label:
+                text: 'Valor da gorjeta (opcional)'
+                font_name: "Comic"
+
+            TextInput:
+                id: gorjeta_input
+                hint_text: 'Inserir Gorjeta'
+
+            Label:
+                text: 'Endereço para entrega'
+                font_name: "Comic"
+
+            TextInput:
+                id: endereco_input
+                hint_text: 'Inserir Endereço'
+
+        ButtonMenu:
+            text: 'Salvar'
+            size_hint_y: None
+            height: '48dp'
+            on_release: root.salvar_comanda()
+        ButtonMenu:
+            text: 'Menu Principal'
+            size_hint_y: None
+            height: '48dp'
+            on_release: app.root.current = "menu"
+       
+
+
+
+<ButtonMenu@ButtonBehavior+Label>:
+    canvas.before:
+        Color:
+            rgba: 0.827, 0.373, 0.290, 1
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+            radius: [20]
+
+
+            
+

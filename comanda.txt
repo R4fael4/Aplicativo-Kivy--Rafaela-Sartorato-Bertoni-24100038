@@ -1,0 +1,18 @@
+Número: 1
+Nome do Cliente: 2
+Pedido Realizado: 3
+Gorjeta: 4
+Endereço: 5
+--------------------------------------------------
+Número: 1
+Nome do Cliente: 2
+Pedido Realizado: 3
+Gorjeta: 4
+Endereço: 5
+--------------------------------------------------
+Número: 1
+Nome do Cliente: 2
+Pedido Realizado: 3
+Gorjeta: 4
+Endereço: 5
+--------------------------------------------------
